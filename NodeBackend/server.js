@@ -41,8 +41,12 @@ app.get("/", (req, res) => {
   res.json({ status: "Node.js MongoDB backend is running" });
 });
 
-app.get("/api/student-view/:studentId", async (req, res) => {
-  try {
+app.get("/api/student-view/:studentId", async (req, res) => 
+  
+  {
+  try
+  
+  {
     const data = await StudentView.findOne({ studentId: Number(req.params.studentId) }).lean();
     if (!data) return res.status(404).json({ message: "Student view not found" });
     res.json(data);
