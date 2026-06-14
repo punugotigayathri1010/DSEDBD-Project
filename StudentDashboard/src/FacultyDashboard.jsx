@@ -363,7 +363,7 @@ export default function FacultyDashboard() {
             <div className="stats-grid">
               <div className="stat-card purple"><h3>Total Students</h3><h1>{students.length}</h1></div>
               <div className="stat-card cyan"><h3>Departments</h3><h1>4</h1></div>
-              <div className="stat-card orange"><h3>Mongo View API</h3><h1>ON</h1></div>
+              
             </div>
           </>
         )}
