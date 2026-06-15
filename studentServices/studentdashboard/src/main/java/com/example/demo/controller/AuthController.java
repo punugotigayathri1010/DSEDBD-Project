@@ -14,9 +14,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
+
 @RequestMapping("/api/auth")
 @Tag(name = "Authentication API", description = "Endpoints for user registration and login")
-public class AuthController {
+public class AuthController 
+{
 
     @Autowired private UserRepository userRepo;
     @Autowired private JwtUtil jwtUtil;
