@@ -10,7 +10,10 @@ security = HTTPBearer()
 
 
 def safe_response(response):
+
+
     if response.status_code >= 400:
+        
         raise HTTPException(status_code=response.status_code, detail=response.text)
     
     try:
