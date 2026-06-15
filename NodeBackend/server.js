@@ -78,7 +78,11 @@ app.post("/api/student-view", async (req, res) => {
     res.status(201).json(updated);
   } catch (error) {
     res.status(500).json({ message: error.message });
+    
   }
+
+
+
 });
 
 app.put("/api/student-view/:studentId", async (req, res) => {
