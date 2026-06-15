@@ -9,8 +9,12 @@ export default function Home() {
       <div className="auth-card role-card">
         <div style={{ textAlign: "center", marginBottom: "25px" }}>
           <FaUserGraduate size={60} />
+          
           <h1 style={{ marginTop: "10px" }}>EduTrack</h1>
+
           <p>Select your login type</p>
+
+
         </div>
 
         <button className="role-option" onClick={() => navigate("/faculty-login")}>

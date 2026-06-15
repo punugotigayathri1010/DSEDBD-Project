@@ -39,27 +39,29 @@ public class AuthController {
     }
 
     @PostMapping("/signin")
-    @Operation(summary = "Login user", description = "Authenticates a user and returns a JWT token.")
     public ResponseEntity<?> signin(@RequestBody LoginRequest req) {
         User user = userRepo.findByEmail(req.getEmail());
-        
-        // 1. Bulletproof password check (prevents NullPointerException)
+
+        System.out.println("Entered email: " + req.getEmail());
+        System.out.println("Entered password: " + req.getPassword());
+        System.out.println("DB user: " + user);
+        System.out.println("DB password: " + (user != null ? user.getPassword() : "NO USER"));
+        System.out.println("DB role: " + (user != null ? user.getRole() : "NO ROLE"));
+
         if (user == null || req.getPassword() == null || !req.getPassword().equals(user.getPassword())) {
             return ResponseEntity.status(401).body("Invalid email or password");
         }
-        
-        // 2. Bulletproof role check (defaults to "USER" if role is missing in DB)
+
         String roleName = (user.getRole() != null) ? user.getRole().name() : "USER";
-        
-        // 3. Generate token
+
         String token = jwtUtil.generateToken(user.getEmail(), roleName);
-        
+
         Map<String, Object> res = new HashMap<>();
         res.put("token", token);
         res.put("role", roleName);
         res.put("name", user.getName());
         res.put("email", user.getEmail());
-        
+
         return ResponseEntity.ok(res);
     }
 }

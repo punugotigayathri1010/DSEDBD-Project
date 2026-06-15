@@ -8,9 +8,8 @@ SPRING_URL = "http://localhost:1821/api/"
 NODE_URL = "http://localhost:5000/api/"
 security = HTTPBearer()
 
-# --- UPDATE THIS FUNCTION ---
+
 def safe_response(response):
-    # If Spring Boot rejects it (401, 403, 404, etc), FastAPI should too!
     if response.status_code >= 400:
         raise HTTPException(status_code=response.status_code, detail=response.text)
     
